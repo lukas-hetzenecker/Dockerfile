@@ -10,6 +10,7 @@
   group:
     name:  "{{ FTP_USER }}"
     gid:   "{{ FTP_GID }}"
+  ignore_errors: true
 
 - name: Create ftp user
   user:
@@ -19,6 +20,7 @@
     shell:    "/bin/bash"
     home:     "{{ FTP_PATH }}"
     password: "{{ FTP_PASSWORD |password_hash('sha512') }}"
+  ignore_errors: true
 
 - name: Ensure FTP_PATH exists
   file:
